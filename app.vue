@@ -1,11 +1,19 @@
 <template>
-  <div class="flex w-full h-screen justify-center items-start bg-[#0F172A] dark">
+  <div
+    class="flex w-full justify-center items-start bg-[#0F172A] dark min-h-screen"
+  >
     <div class="w-[700px] mt-12">
-    <Sidebar />
-  </div>
+      <Player :song="currentSong"/>
+      <SongTabs @play="playFunc" class="w-full" />
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 // import Sidebar from "@/components/sidebar.vue"
-import Sidebar from "@/components/player.vue"
+
+const currentSong = ref<null | Song>(null);
+
+const playFunc = (song: Song) => {
+  currentSong.value = song;
+};
 </script>
