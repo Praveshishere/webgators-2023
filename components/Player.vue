@@ -109,10 +109,11 @@
         class="bg-slate-100 text-slate-700 flex-none -my-2 mx-auto w-20 h-20 rounded-full ring-1 ring-slate-900/5 shadow-md flex items-center justify-center"
         aria-label="Pause"
       >
-        <svg width="30" height="32" fill="currentColor">
+        <svg v-if="playState" width="30" height="32" fill="currentColor">
           <rect x="6" y="4" width="4" height="24" rx="2" />
           <rect x="20" y="4" width="4" height="24" rx="2" />
         </svg>
+        <PlayIcon v-else class="h-18" />
       </button>
       <div class="flex-auto flex items-center justify-evenly">
         <button type="button" aria-label="Skip 10 seconds">
@@ -173,6 +174,7 @@
 
 <script setup lang="ts">
 import { PropType } from "vue";
+import PlayIcon from "@heroicons/vue/24/solid/PlayCircleIcon";
 const circle = ref<HTMLElement | null>(null);
 const progress = ref<HTMLElement | null>(null);
 
